@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { BUDGET_OPTIONS, INTERESTS, LOCATIONS } from '../shared/constants';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
@@ -23,11 +23,11 @@ export class EnquiryComponent implements OnInit {
   interestOptions = INTERESTS;
   travellerOptions = [1,2,3,4,5,6,7].map(option => `${option === 7 ? "6+" : option} travelers`);
   budgetOptions = BUDGET_OPTIONS;
-  enquiryForm = new FormGroup({
-    place: new FormControl([], [Validators.required]),
-    interest: new FormControl([], [Validators.required]),
-    travellers: new FormControl([], [Validators.required]),
-    budget: new FormControl([], [Validators.required])
+  enquiryForm = new UntypedFormGroup({
+    place: new UntypedFormControl([], [Validators.required]),
+    interest: new UntypedFormControl([], [Validators.required]),
+    travellers: new UntypedFormControl([], [Validators.required]),
+    budget: new UntypedFormControl([], [Validators.required])
   });
   saveUrl: string = `${environment.baseUrl}save`;
 
@@ -46,7 +46,6 @@ export class EnquiryComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('res', result);
       if (result) {
         this.saveDetails(result);
       }
@@ -55,7 +54,6 @@ export class EnquiryComponent implements OnInit {
 
   saveDetails(tripData: any) {
     this.http.post(this.saveUrl, tripData).subscribe(res => {
-      console.log(res);
       this.enquiryForm.reset();
     });
   }
@@ -81,18 +79,18 @@ export class EnquiryDialogComponent {
   travellerOptions = [1,2,3,4,5,6,7].map(option => `${option === 7 ? "6+" : option} travelers`);
   budgetOptions = BUDGET_OPTIONS;
 
-  tripForm = new FormGroup({
-    place: new FormControl([], [Validators.required]),
-    interest: new FormControl([], [Validators.required]),
-    travellers: new FormControl([], [Validators.required]),
-    budget: new FormControl([], [Validators.required]),
-    fullName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.required, Validators.pattern(/\d+/), Validators.maxLength(12), Validators.minLength(10)]),
-    tripDuration: new FormControl('', [Validators.required, Validators.pattern(/\d+/)]),
-    tripMonth: new FormControl('', [Validators.required]),
-    planningStage: new FormControl('', [Validators.required]),
-    specialRequest: new FormControl('')
+  tripForm = new UntypedFormGroup({
+    place: new UntypedFormControl([], [Validators.required]),
+    interest: new UntypedFormControl([], [Validators.required]),
+    travellers: new UntypedFormControl([], [Validators.required]),
+    budget: new UntypedFormControl([], [Validators.required]),
+    fullName: new UntypedFormControl('', [Validators.required]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    phone: new UntypedFormControl('', [Validators.required, Validators.pattern(/\d+/), Validators.maxLength(12), Validators.minLength(10)]),
+    tripDuration: new UntypedFormControl('', [Validators.required, Validators.pattern(/\d+/)]),
+    tripMonth: new UntypedFormControl('', [Validators.required]),
+    planningStage: new UntypedFormControl('', [Validators.required]),
+    specialRequest: new UntypedFormControl('')
   })
   
   constructor(
@@ -122,13 +120,11 @@ export class EnquiryDialogComponent {
   }
 
   toggleInput(e: any) {
-    console.log(e);
     if (e.value === 'Yes') {
       this.requestDiv = true;
     } else {
       this.requestDiv = false;
     }
-    
   }
 
   onSubmit() {

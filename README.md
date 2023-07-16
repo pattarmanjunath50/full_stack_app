@@ -19,3 +19,8 @@ To run this project follow the following steps:
 - Create a folder named `database` in the `serverApp` as this project uses json file in the folder `./database/` as the DB source.
 - run `npm install` and run `npm start` which will run the application on prod mode. To run it in dev mode use command `npm start-dev`
 - The project will run on the system on port `3000`
+
+## Running both in PROD
+- The `prebuild` and `postbuild` scripts of the serverApp has commands to build and copy the clientApp artifacts into teh `dist` folder of the serverApp. Which will be statically served by the serverApp.
+- To run both the apps in PROD go to the `serverApp` directory and run `npm run build` which will run the prebuild and postbuild scripts and transpile the server code as well.
+- To start the server run `npm run start`

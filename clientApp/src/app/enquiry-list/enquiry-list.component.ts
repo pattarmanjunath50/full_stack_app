@@ -9,7 +9,6 @@ import { environment } from 'src/environments/environment';
 })
 export class EnquiryListComponent implements OnInit {
   enquiryList: any[] = [];
-  enquiryColumns: string[] = [];
   listUrl: string = `${environment.baseUrl}list`;
   constructor(private http: HttpClient) { }
 
@@ -21,9 +20,6 @@ export class EnquiryListComponent implements OnInit {
     this.http.get(this.listUrl).subscribe((results: any) => {
       if (results.length) {
         this.enquiryList = results.slice();
-        this.enquiryColumns = Object.keys(results[0]).filter(column => (column !== 'travel_id' && column !== 'createdDate'));
-        console.log('list', this.enquiryList);
-        console.log('columns', this.enquiryColumns);
       }
     })
   }

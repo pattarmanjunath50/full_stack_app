@@ -8,14 +8,18 @@ const routes: Routes = [
   { 
     path: 'dashboard', component: DashboardComponent, children: [
       { path: 'enquiry', component: EnquiryComponent },
-      { path: 'enquiry-list', component: EnquiryListComponent }
+      { path: 'enquiry-list', component: EnquiryListComponent },
+      { path: '**', redirectTo: '/dashboard/enquiry', pathMatch: 'full' }
     ]
   },
-  { path: '', redirectTo: '/dashboard/enquiry', pathMatch: 'full' }
+  { path: '', redirectTo: '/dashboard/enquiry', pathMatch: 'full' },
+  { path: '**', redirectTo: '/dashboard/enquiry', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    useHash: true
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

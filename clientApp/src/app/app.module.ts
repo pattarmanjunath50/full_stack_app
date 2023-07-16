@@ -28,39 +28,38 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    EnquiryComponent,
-    EnquiryListComponent,
-    EnquiryDialogComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    NgbCarouselModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatRadioModule,
-    MatInputModule,
-    MatChipsModule,
-    HttpClientModule,
-    MatTableModule,
-    MatExpansionModule,
-    MatSnackBarModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [EnquiryDialogComponent]
+    declarations: [
+        AppComponent,
+        DashboardComponent,
+        EnquiryComponent,
+        EnquiryListComponent,
+        EnquiryDialogComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        NgbCarouselModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatRadioModule,
+        MatInputModule,
+        MatChipsModule,
+        HttpClientModule,
+        MatTableModule,
+        MatExpansionModule,
+        MatSnackBarModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
