@@ -1,0 +1,105 @@
+<div class="dialog-container">
+    <div mat-dialog-title>
+        <h1>Almost There!</h1>
+        <h2>We need a bit more info to create your itinerary:</h2>
+    </div>
+    <div mat-dialog-content>
+        <form [formGroup]="tripForm" class="container-fluid">
+            <div class="enquiry-form">
+                <div class="country">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Where do you want to go?</mat-label>
+                        <mat-select formControlName="place" multiple>
+                            <mat-optgroup *ngFor="let area of placeOptions; index as i" [label]="area.area">
+                                <mat-option *ngFor="let place of area.places" [value]="place">{{place}}</mat-option>
+                            </mat-optgroup>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="interests">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Your Interests?</mat-label>
+                        <mat-select formControlName="interest" multiple>
+                            <mat-option *ngFor="let interest of interestOptions" [value]="interest">{{interest}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="travellers">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>No. of Travellers</mat-label>
+                        <mat-select formControlName="travellers">
+                            <mat-option *ngFor="let option of travellerOptions" [value]="option">{{option}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="budgets">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Budget Per Person</mat-label>
+                        <mat-select formControlName="budget">
+                            <mat-option *ngFor="let option of budgetOptions" [value]="option">{{option}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div>
+                <div class="full-name">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Full Name</mat-label>
+                        <input matInput formControlName="fullName">
+                    </mat-form-field>
+                </div>
+                <div class="email">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Email Address</mat-label>
+                        <input matInput formControlName="email">
+                    </mat-form-field>
+                </div>
+                <div class="phone">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput formControlName="phone">
+                    </mat-form-field>
+                </div>
+                <div class="row travel-details">
+                    <mat-form-field appearance="outline" class="col-6">
+                        <mat-label>Trip Duration (Days)</mat-label>
+                        <input matInput formControlName="tripDuration">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-6">
+                        <mat-label>When?</mat-label>
+                        <mat-select formControlName="tripMonth">
+                            <mat-option *ngFor="let option of monthOptions" [value]="option">{{option}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="planning-stage">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>What stage of planning are you in?</mat-label>
+                        <mat-select formControlName="planningStage">
+                            <mat-option *ngFor="let option of planOptions" [value]="option">{{option}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="special-request">
+                    <div class="row">
+                        <div class="col-6">Any notes or special requests?</div>
+                        <mat-radio-group (change)="toggleInput($event)" class="col-6" aria-label="Select an option">
+                            <mat-radio-button value="Yes">Yes</mat-radio-button>
+                            <mat-radio-button value="No">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div *ngIf="requestDiv">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <textarea matInput formControlName="specialRequest"
+                                placeholder="Enter notes or special requests..."></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>            
+        </form>
+    </div>
+    <div mat-dialog-actions>
+        <button (click)="onSubmit()" mat-raised-button class="full-width full-button">Submit</button>
+    </div>
+</div>

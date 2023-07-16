@@ -1,0 +1,18 @@
+<div>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span>{{headerMsg}}</span>
+      <span class="spacer"></span>
+      <button (click)="headerMsg = 'Plan the Trip'" color="warn" [routerLink]="['enquiry']" mat-raised-button aria-label="Enquiry">
+        Enquiry
+      </button>
+      <button (click)="headerMsg = 'Enquiries'" color="warn" [routerLink]="['enquiry-list']" mat-raised-button aria-label="Enquiry List">
+        Enquiry List
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="route-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

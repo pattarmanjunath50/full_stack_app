@@ -1,0 +1,60 @@
+<div>
+    <div class="img-carousel">
+        <ngb-carousel *ngIf="imageData" [showNavigationArrows]="false" [showNavigationIndicators]="false">
+            <ng-template ngbSlide *ngFor="let image of imageData">
+              <div class="picsum-img-wrapper">
+                <img [src]="image.imgUrl" alt="Random slide">
+              </div>
+              <div class="carousel-caption carousel-description">
+                <h1>{{image.captionTitle}}</h1>
+                <h2>{{image.captionDescription}}</h2>
+                <form [formGroup]="enquiryForm" class="row">
+                    <div class="row enquiry-form input-group">
+                        <div class="field country col-xl-2 d-none d-xl-block">
+                            <mat-form-field>
+                                <mat-label>Where do you want to go?</mat-label>
+                                <mat-select formControlName="place" multiple>
+                                    <mat-optgroup *ngFor="let area of placeOptions; index as i" [label]="area.area">
+                                        <mat-option *ngFor="let place of area.places" [value]="place">{{place}}</mat-option>
+                                    </mat-optgroup>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="field interests col-xl-2 d-none d-xl-block">
+                            <mat-form-field>
+                                <mat-label>Your Interests?</mat-label>
+                                <mat-select formControlName="interest" multiple>
+                                    <mat-option *ngFor="let interest of interestOptions" [value]="interest">{{interest}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="field travellers col-xl-2 d-none d-xl-block">
+                            <mat-form-field>
+                                <mat-label>No. of Travellers</mat-label>
+                                <mat-select formControlName="travellers">
+                                    <mat-option *ngFor="let option of travellerOptions" [value]="option">{{option}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="field budgets col-xl-2 d-none d-xl-block">
+                            <mat-form-field>
+                                <mat-label>Budget Per Person</mat-label>
+                                <mat-select formControlName="budget">
+                                    <mat-option *ngFor="let option of budgetOptions" [value]="option">{{option}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-xl-2 col-12">
+                            <button mat-raised-button class="full-button" (click)="openDialog()">Create My Trip Now</button>
+                        </div>
+                    </div>
+                </form>
+              </div>
+            </ng-template>
+        </ngb-carousel>
+    </div>
+    
+    <div class="full-width-text">
+        <p>Experience a completely customized and flexible trip of a lifetime with experts you can trust. We are an <strong>award-winning team</strong> that offers <strong>round-the-clock local support</strong> during your trip and <strong>100% financial protection</strong> so you know you are in safe hands. That’s why over <strong>40,000+ enchanted guests</strong> vouch for us – because with us, you can <strong>dream, book and travel carefree.</strong></p>
+    </div>
+</div>

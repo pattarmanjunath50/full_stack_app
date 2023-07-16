@@ -1,0 +1,56 @@
+<div class="enquiry-list">
+    <mat-accordion *ngIf="enquiryList.length" class="headers-align" multi>
+        <mat-expansion-panel *ngFor="let enquiry of enquiryList">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Name : {{enquiry.fullName || ''}}
+            </mat-panel-title>
+            <mat-panel-description>
+              Added : {{getTimeAgo(enquiry.createdDate)}}
+              <mat-icon>account_circle</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="panel-body">
+            <div class="row">
+                <div class="col-4">Phone Number</div>:
+                <div class="col-6">{{enquiry.phone}}</div>
+            </div>
+            <div class="row">
+                <div class="col-4">Email ID</div>:
+                <div class="col-6">{{enquiry.email}}</div>
+            </div>
+            <div class="row">
+                <div class="col-4">Places to Visit</div>:
+                <div class="col-6">{{enquiry.place}}</div>
+            </div>
+            <div class="row">
+                <div class="col-4">Interested in</div>:
+                <div class="col-6">{{enquiry.interest}}</div>
+            </div>
+            <div class="row">
+                <div class="col-4">Number of Travellers</div>:
+                <div class="col-6">{{enquiry.travellers}}</div>
+            </div>
+            <div class="row">
+                <div class="col-4">Trip Duration</div>:
+                <div class="col-6">{{enquiry.tripDuration}}</div>
+            </div>
+            <div class="row">
+                <div class="col-4">Going in the month of</div>:
+                <div class="col-6">{{enquiry.tripMonth}}</div>
+            </div>
+            <div class="row">
+                <div class="col-4">Stage of Planning</div>:
+                <div class="col-6">{{enquiry.planningStage}}</div>
+            </div>
+            <div *ngIf="enquiry.specialRequest" class="row">
+                <div class="col-4">Special Requests</div>:
+                <div class="col-6">{{enquiry.specialRequest}}</div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <div *ngIf="!enquiryList.length" class="empty-msg container-fluid row">
+        <h1>No Enquiries</h1>
+    </div>
+</div>
