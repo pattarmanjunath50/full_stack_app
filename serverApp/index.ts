@@ -1,7 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import { Router }  from './routes/index';
-import path from 'path';
 import bodyParser from 'body-parser';
 
 dotenv.config();
@@ -20,14 +19,14 @@ app.use((req: Request, res: Response, next) => {
 });
 
 // Serve static files from the dist directory
-app.use('/', express.static(path.join(__dirname, 'dist')));
+// app.use('/', express.static(path.join(__dirname, 'dist/client')));
 
 // Routes
 app.use('/api', Router);
 // Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client/index.html'));
+// });
   
 app.listen(port, () => {
   console.log(`Server is running on PORT: ${port}`);
